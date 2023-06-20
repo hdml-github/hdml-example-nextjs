@@ -3,7 +3,6 @@ import type { InferGetServerSidePropsType } from 'next'
 import { Inter } from "next/font/google"
 import { getHdmlProps } from '@/helpers/getHdmlProps';
 import { ModalProvider } from '@/providers/ModalProvider';
-import ModalWrapper from '@/components/ModalWrapper';
 import HdmlConnector from "@/components/HdmlConnector";
 import Header from '@/components/Header';
 import AddModal from './AddModal';
@@ -54,16 +53,15 @@ export default function Builder(
             Please, add your Model/Frame
           </div>
 
-          <AddModal show={showAddModal} setShow={setShowAddModal} />
-          
           <button
             className="absolute bottom-0 right-0 mb-6 mr-12 w-14 h-14 rounded-full bg-red-600 hover:bg-red-700 active:bg-red-800 text-3xl text-white shadow-md shadow-black/50 active:shadow-black/20"
             onClick={ () => setShowAddModal(true) }>
             +
           </button>
+
+          <AddModal show={showAddModal} setShow={setShowAddModal} />
         </main>
       </div>
-      <ModalWrapper />
     </ModalProvider>
   )
 }

@@ -1,5 +1,6 @@
 import { useRef, type ReactNode } from 'react';
 import { ModalContext } from "@/contexts/ModalContext";
+import ModalWrapper from '@/components/ModalWrapper';
 
 export type ModalWrapperStorageProps = {
   children: ReactNode;
@@ -13,6 +14,7 @@ export function ModalProvider(props: ModalWrapperStorageProps) {
   return (
     <ModalContext.Provider value={modalRef}>
       {props.children}
+      <ModalWrapper />
     </ModalContext.Provider>
   );
 }

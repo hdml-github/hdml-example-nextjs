@@ -1,6 +1,3 @@
-import { useContext, useEffect, useState } from 'react';
-import { createPortal } from "react-dom";
-import { ModalContext } from "@/contexts/ModalContext";
 import Modal from '@/components/Modal';
 import SelectList from '@/components/SelectList';
 
@@ -10,15 +7,9 @@ export type AddModalProps = {
 };
 
 export default function AddModal(props: AddModalProps) {
-  const modalWrapperCtx = useContext(ModalContext);
-  const [wrapper, setWrapper] = useState(modalWrapperCtx.current);
-  useEffect(
-    () => setWrapper(modalWrapperCtx.current),
-    [modalWrapperCtx],
-  );
   return (
     <>
-      {props.show && wrapper && createPortal(
+      {props.show && 
         <Modal close={ () => props.setShow(false) }>
           <SelectList
             items={[
@@ -30,9 +21,8 @@ export default function AddModal(props: AddModalProps) {
               props.setShow(false);
             } }
           />
-        </Modal>,
-        wrapper as HTMLDivElement,
-      )}
+        </Modal>
+      }
     </>
   );
 }
